@@ -1,30 +1,22 @@
 <template>
-  <MainPart
-    title="BROWSE QUESTIONS"
-    subtitle="Choose a category with questions"
-    areatitle="Questions from the chapter"
-    :dropdownList="questionsObject"
-    :questionsList="questionsObject[0].questions"
-  >
-    <template v-slot:list>
-      <ul>
-        <li v-for="question in questionsObject[0].questions" :key="question">
-          {{ question }}
-        </li>
-      </ul>
-    </template></MainPart
-  >
+  <h2>BROWSE QUESTIONS</h2>
+  <p>Choose a category with questions</p>
+  <select name="questionsAmount" id="questionsAmount">
+    <option v-for="(item, index) in questionsObject" :key="index" value="index">
+      {{ item.name }}
+    </option>
+  </select>
+  <h3>Questions from the chapter</h3>
+  <ul>
+    <li v-for="question in questionsObject[0].questions" :key="question">
+      {{ question }}
+    </li>
+  </ul>
 </template>
 
 <script>
-import MainPart from "@/components/MainPart.vue";
-
 export default {
   name: "BrowseQuestionsView",
-
-  components: {
-    MainPart,
-  },
 
   data() {
     return {
