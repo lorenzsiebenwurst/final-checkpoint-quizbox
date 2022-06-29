@@ -7,7 +7,9 @@
     :questionsList="questionsObject"
     @add-category="addCategoryToSelectedList(index)"
   />
-  <router-link :to="{ name: 'QuizSession' }">Start Quizbox</router-link>
+  <router-link :to="{ name: 'QuizSession', query: currentSelection }"
+    >Start Quizbox</router-link
+  >
 </template>
 
 <script>
@@ -25,6 +27,10 @@ export default {
   },
   data() {
     return {
+      currentSelection: {
+        id: [0, 1, 2],
+        amount: 10,
+      },
       amount: [
         { name: "Amount of Questions" },
         { name: "10" },
