@@ -17,8 +17,6 @@
 </template>
 
 <script>
-/* <p>{{ questionsObject[0].questions }}</p>*/
-
 import MainPart from "@/components/MainPart.vue";
 
 export default {
