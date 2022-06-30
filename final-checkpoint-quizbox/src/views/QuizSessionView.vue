@@ -3,7 +3,7 @@
   <p>Question count</p>
   <div>{{ questionNumber }}/{{ amountToFullNumber }}</div>
   <p>
-    {{ questionsObject[sessionAttributes.id].questions[questionNumber] }}
+    {{ question }}
   </p>
   <button @click="clickNext">Next</button>
 </template>
@@ -22,6 +22,11 @@ export default {
   computed: {
     amountToFullNumber() {
       return this.sessionAttributes.amount + "0";
+    },
+    question() {
+      return this.questionsObject[this.sessionAttributes.id].questions[
+        this.questionNumber
+      ];
     },
   },
   methods: {
