@@ -1,13 +1,9 @@
 <template>
   <h2>PLAY QUIZBOX</h2>
   <p>Quiz time - test what you know</p>
-  <select
-    name="questionsAmount"
-    id="questionsAmount"
-    @change="categorySelected"
-  >
+  <select name="questionsAmount" id="questionsAmount" @change="selectedAmount">
     <option v-for="(number, index) in amount" :key="index" :value="index">
-      {{ number.name }}
+      {{ number }}
     </option>
   </select>
   <h3>Questions area</h3>
@@ -16,8 +12,9 @@
       v-for="(question, index) in questionsObject"
       :key="index"
       class="category"
+      :value="index"
     >
-      <input type="checkbox" :id="index" />
+      <input type="checkbox" :id="index" @change="selectedCategory" />
       <label :for="index">{{ question.name }}</label>
       <p>{{ question.amount }}</p>
     </li>
@@ -31,19 +28,26 @@
 import questionsObject from "@/data/questions.js";
 export default {
   name: "PlayQuizboxView",
-
+  methods: {
+    selectedAmount(event) {
+      this.currentSelection.amount = event.target.value;
+    },
+    selectedCategory(event) {
+      const indexOfCategory = this.currentSelection.id.indexOf(event.target.id);
+      if (this.currentSelection.id.includes(event.target.id)) {
+        this.currentSelection.id.splice(indexOfCategory, 1);
+      } else {
+        this.currentSelection.id.push(event.target.id);
+      }
+    },
+  },
   data() {
     return {
       currentSelection: {
-        id: [0, 1, 2],
-        amount: 10,
+        id: [],
+        amount: 0,
       },
-      amount: [
-        { name: "Amount of Questions" },
-        { name: "10" },
-        { name: "20" },
-        { name: "30" },
-      ],
+      amount: ["Amount of Questions", "10", "20", "30"],
       questionsObject,
 
       selectedList: [],
