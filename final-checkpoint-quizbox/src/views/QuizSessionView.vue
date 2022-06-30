@@ -26,6 +26,7 @@ export default {
       questionsObject,
       sessionAttributes: this.$route.query,
       questionNumber: 1,
+      questionIndex: 0,
     };
   },
   computed: {
@@ -66,8 +67,9 @@ export default {
           );
         });
       }
+
       //return the array with relevant Questions
-      return relevantQuestions[this.questionNumber];
+      return relevantQuestions[this.questionIndex];
     },
   },
 
@@ -75,6 +77,7 @@ export default {
     clickNext() {
       if (this.questionNumber < this.amountToFullNumber) {
         this.questionNumber++;
+        this.questionIndex++;
       }
     },
   },
