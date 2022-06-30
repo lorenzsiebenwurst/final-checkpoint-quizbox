@@ -44,7 +44,15 @@ export default {
         //push the amount of questions per topic in the empty array
         this.sessionAttributes.id.forEach((element) => {
           for (let i = 0; i < questionsAmountPerTopic; i++) {
-            relevantQuestions.push(this.questionsObject[element].questions[i]);
+            relevantQuestions.push(
+              this.questionsObject[element].questions[
+                Math.floor(
+                  Math.random() *
+                    Math.random() *
+                    (this.questionsObject[element].amount + 2)
+                )
+              ]
+            );
           }
         });
       } else {
@@ -56,7 +64,15 @@ export default {
         let lastElement = 0;
         this.sessionAttributes.id.forEach((element) => {
           for (let i = 0; i < questionsAmountPerTopic; i++) {
-            relevantQuestions.push(this.questionsObject[element].questions[i]);
+            relevantQuestions.push(
+              this.questionsObject[element].questions[
+                Math.floor(
+                  Math.random() *
+                    Math.random() *
+                    (this.questionsObject[element].amount + 2)
+                )
+              ]
+            );
           }
           //last Category should have one more question
           lastElement++;
@@ -68,7 +84,6 @@ export default {
         );
       }
 
-      console.log(relevantQuestions[this.questionIndex]);
       console.log(relevantQuestions);
       //return the array with relevant Questions
       return relevantQuestions[this.questionIndex];
