@@ -60,14 +60,16 @@ export default {
           }
           //last Category should have one more question
           lastElement++;
-          relevantQuestions.push(
-            this.questionsObject[lastElement].questions[
-              questionsAmountPerTopic + 1
-            ]
-          );
         });
+        relevantQuestions.push(
+          this.questionsObject[lastElement].questions[
+            questionsAmountPerTopic + 1
+          ]
+        );
       }
 
+      console.log(relevantQuestions[this.questionIndex]);
+      console.log(relevantQuestions);
       //return the array with relevant Questions
       return relevantQuestions[this.questionIndex];
     },
