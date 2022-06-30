@@ -5,7 +5,10 @@
   <p>
     {{ question }}
   </p>
-  <button @click="clickNext">Next</button>
+  <button @click="clickNext" v-if="questionNumber < amountToFullNumber">
+    Next
+  </button>
+  <router-link :to="{ name: 'playQuizbox' }" v-else>End Session</router-link>
 </template>
 
 <script>
