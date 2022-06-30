@@ -25,8 +25,7 @@ export default {
     return {
       questionsObject,
       sessionAttributes: this.$route.query,
-      questionNumber: 0,
-      relevantQuestions: [],
+      questionNumber: 1,
     };
   },
   computed: {
@@ -34,11 +33,44 @@ export default {
       return this.sessionAttributes.amount + "0";
     },
     question() {
-      return this.questionsObject[this.sessionAttributes.id].questions[
-        this.questionNumber
-      ];
+      //empty array for relevant Questions
+      const relevantQuestions = [];
+      //if there is an equal number of questions for each topic
+      if (this.amountToFullNumber % this.sessionAttributes.id.length === 0) {
+        //define the number of questions for each topic
+        const questionsAmountPerTopic =
+          this.amountToFullNumber / this.sessionAttributes.id.length;
+        //push the amount of questions per topic in the empty array
+        this.sessionAttributes.id.forEach((element) => {
+          for (let i = 0; i < questionsAmountPerTopic; i++) {
+            relevantQuestions.push(this.questionsObject[element].questions[i]);
+          }
+        });
+      } else {
+        //questions amount can not be equally devided
+        //amount per topic except of the last topic => there must be one more question
+        const questionsAmountPerTopic = Math.floor(
+          this.amountToFullNumber / this.sessionAttributes.id.length
+        );
+        let lastElement = 0;
+        this.sessionAttributes.id.forEach((element) => {
+          for (let i = 0; i < questionsAmountPerTopic; i++) {
+            relevantQuestions.push(this.questionsObject[element].questions[i]);
+          }
+          //last Category should have one more question
+          lastElement++;
+          relevantQuestions.push(
+            this.questionsObject[lastElement].questions[
+              questionsAmountPerTopic + 1
+            ]
+          );
+        });
+      }
+      //return the array with relevant Questions
+      return relevantQuestions[this.questionNumber];
     },
   },
+
   methods: {
     clickNext() {
       if (this.questionNumber < this.amountToFullNumber) {
