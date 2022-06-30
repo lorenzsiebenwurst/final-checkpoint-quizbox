@@ -12,11 +12,18 @@
 import questionsObject from "@/data/questions.js";
 export default {
   name: "QuizSessionView",
+  /*mounted() {
+    for (let i = 0; i < this.amountToFullNumber; i++) {
+      this.relevantQuestions.push(this.questionsObject.questions[i]);
+    }
+    console.log(this.relevantQuestions);
+  },*/
   data() {
     return {
       questionsObject,
       sessionAttributes: this.$route.query,
       questionNumber: 0,
+      relevantQuestions: [],
     };
   },
   computed: {

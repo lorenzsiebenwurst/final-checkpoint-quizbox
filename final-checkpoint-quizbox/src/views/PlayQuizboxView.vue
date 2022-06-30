@@ -19,12 +19,20 @@
       <p>{{ question.amount }}</p>
     </li>
   </ul>
-  <router-link :to="{ name: 'QuizSession', query: currentSelection }"
+  <router-link
+    :to="{ name: 'QuizSession', query: currentSelection }"
+    v-if="
+      this.currentSelection.amount !== 0 &&
+      this.currentSelection.id.length !== 0
+    "
     >Start Session</router-link
   >
 </template>
 
 <script>
+/*<router-link :to="{ name: 'QuizSession', query: currentSelection }"
+    >Start Session</router-link
+  > */
 import questionsObject from "@/data/questions.js";
 export default {
   name: "PlayQuizboxView",
