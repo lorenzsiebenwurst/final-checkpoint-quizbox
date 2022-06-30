@@ -1,6 +1,7 @@
 const questionsObject = [
   {
     name: "Basics Html CSS",
+    amount: 66,
     questions: [
       "What is the DOCTYPE?",
       "What is a HTML comment?",
@@ -72,6 +73,7 @@ const questionsObject = [
   },
   {
     name: "Advanced Html CSS",
+    amount: 29,
     questions: [
       "What is the purpose of the flex-direction property?",
       "What is a flexbox?",
@@ -106,6 +108,7 @@ const questionsObject = [
   },
   {
     name: "Basics JS",
+    amount: 33,
     questions: [
       "Name the two different data types in JavaScript",
       "Name three data types?",
@@ -144,6 +147,7 @@ const questionsObject = [
   },
   {
     name: "First JS Web App",
+    amount: 34,
     questions: [
       "What is the window object?",
       "What is the document object?",
@@ -183,6 +187,7 @@ const questionsObject = [
   },
   {
     name: "Terminal and Shell",
+    amount: 21,
     questions: [
       "What is a terminal?",
       "What is a alias?",

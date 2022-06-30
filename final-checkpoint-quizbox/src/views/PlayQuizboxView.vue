@@ -1,30 +1,37 @@
 <template>
-  <MainPart
-    title="PLAY QUIZBOX"
-    subtitle="Quiz time - test what you know"
-    areatitle="Questions areas"
-    :dropdownList="amount"
-    :questionsList="questionsObject"
-    @add-category="addCategoryToSelectedList(index)"
-  />
+  <h2>PLAY QUIZBOX</h2>
+  <p>Quiz time - test what you know</p>
+  <select
+    name="questionsAmount"
+    id="questionsAmount"
+    @change="categorySelected"
+  >
+    <option v-for="(number, index) in amount" :key="index" :value="index">
+      {{ number.name }}
+    </option>
+  </select>
+  <h3>Questions area</h3>
+  <ul>
+    <li
+      v-for="(question, index) in questionsObject"
+      :key="index"
+      class="category"
+    >
+      <input type="checkbox" :id="index" />
+      <label :for="index">{{ question.name }}</label>
+      <p>{{ question.amount }}</p>
+    </li>
+  </ul>
   <router-link :to="{ name: 'QuizSession', query: currentSelection }"
-    >Start Quizbox</router-link
+    >Start Session</router-link
   >
 </template>
 
 <script>
-import MainPart from "@/components/MainPart.vue";
-
+import questionsObject from "@/data/questions.js";
 export default {
   name: "PlayQuizboxView",
-  components: {
-    MainPart,
-  },
-  methods: {
-    addCategoryToSelectedList(index) {
-      console.log(index);
-    },
-  },
+
   data() {
     return {
       currentSelection: {
@@ -37,17 +44,20 @@ export default {
         { name: "20" },
         { name: "30" },
       ],
-
-      questionsObject: [
-        { name: "Basics Html CSS", amount: 66 },
-        { name: "Advanced Html CSS", amount: 29 },
-        { name: "Basics JS", amount: 33 },
-        { name: "First JS Web App", amount: 34 },
-        { name: "Terminal and Shell", amount: 21 },
-      ],
+      questionsObject,
 
       selectedList: [],
     };
   },
 };
 </script>
+
+<style scoped>
+.category {
+  display: flex;
+  padding: 0 80px;
+}
+.category > * {
+  padding: 0 10px;
+}
+</style>
