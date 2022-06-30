@@ -1,7 +1,34 @@
-The task:
+# final-checkpoint-quizbox
 
-You will create a Quizbox App with a tech stack of your choice.
+## Project setup
+```
+npm install
+```
 
-The Quizbox helps students to question whether the topics of the bootcamp are understood and learned.
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-The Quiz Box provides questions on the different topics of the Bootcamp.
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Run your end-to-end tests
+```
+npm run test:e2e
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -3,7 +3,7 @@
   <p>Question count</p>
   <div>{{ questionNumber }}/{{ amountToFullNumber }}</div>
   <p>
-    {{ question }}
+    {{ generateArrayOfRelevantQuestions }}
   </p>
   <button @click="clickNext" v-if="questionNumber < amountToFullNumber">
     Next
@@ -33,7 +33,7 @@ export default {
     amountToFullNumber() {
       return this.sessionAttributes.amount + "0";
     },
-    question() {
+    generateArrayOfRelevantQuestions() {
       //empty array for relevant Questions
       const relevantQuestions = [];
       //if there is an equal number of questions for each topic
@@ -47,9 +47,7 @@ export default {
             relevantQuestions.push(
               this.questionsObject[element].questions[
                 Math.floor(
-                  Math.random() *
-                    Math.random() *
-                    (this.questionsObject[element].amount + 2)
+                  Math.random() * (this.questionsObject[element].amount + 1)
                 )
               ]
             );
@@ -67,9 +65,7 @@ export default {
             relevantQuestions.push(
               this.questionsObject[element].questions[
                 Math.floor(
-                  Math.random() *
-                    Math.random() *
-                    (this.questionsObject[element].amount + 2)
+                  Math.random() * (this.questionsObject[element].amount + 1)
                 )
               ]
             );
