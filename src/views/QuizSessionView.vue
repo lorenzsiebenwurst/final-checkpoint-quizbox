@@ -80,7 +80,7 @@ export default {
         );
       }
 
-      console.log(relevantQuestions);
+      //console.log(relevantQuestions);
       //return the array with relevant Questions
       return relevantQuestions[this.questionIndex];
     },

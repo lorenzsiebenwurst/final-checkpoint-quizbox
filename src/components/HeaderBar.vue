@@ -7,13 +7,17 @@
 
     <ul :class="'nav-menu' + type">
       <li class="nav-item">
-        <router-link :to="{ name: 'home' }">Home</router-link>
+        <router-link :to="{ name: 'home' }" @click="this.type = ''"
+          >Home</router-link
+        >
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'playQuizbox' }">Play Quizbox</router-link>
+        <router-link :to="{ name: 'playQuizbox' }" @click="this.type = ''"
+          >Play Quizbox</router-link
+        >
       </li>
       <li class="nav-item">
-        <router-link :to="{ name: 'browseQuestions' }"
+        <router-link :to="{ name: 'browseQuestions' }" @click="this.type = ''"
           >Browse Questions</router-link
         >
       </li>
